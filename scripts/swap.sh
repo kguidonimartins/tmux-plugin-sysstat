@@ -8,7 +8,7 @@ LC_NUMERIC=C
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
-swap_view_tmpl=$(get_tmux_option "@sysstat_swap_view_tmpl" 'SW:#[fg=#{swap.color}]#{swap.pused}#[default]')
+swap_view_tmpl=$(get_tmux_option "@sysstat_swap_view_tmpl" ' #[fg=#{swap.color}]#{swap.pused}#[default]')
 
 swap_medium_threshold=$(get_tmux_option "@sysstat_swap_medium_threshold" "25")
 swap_stress_threshold=$(get_tmux_option "@sysstat_swap_stress_threshold" "75")
