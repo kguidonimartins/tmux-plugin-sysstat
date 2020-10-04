@@ -8,7 +8,7 @@ LC_NUMERIC=C
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
-swap_view_tmpl=$(get_tmux_option "@sysstat_swap_view_tmpl" ' #[fg=#{swap.color}]#{swap.pused}#[default]')
+swap_view_tmpl=$(get_tmux_option "@sysstat_swap_view_tmpl" '#[fg=#{swap.color}]#{swap.pused}#[default]')
 
 swap_medium_threshold=$(get_tmux_option "@sysstat_swap_medium_threshold" "25")
 swap_stress_threshold=$(get_tmux_option "@sysstat_swap_stress_threshold" "75")
@@ -33,11 +33,11 @@ get_swap_color() {
 
 print_swap() {
   local swap_usage
-  
-  
+
+
   if is_osx; then
     swap_usage=$(get_swap_usage_osx)
-  elif is_linux; then 
+  elif is_linux; then
     swap_usage=$(get_swap_usage_linux)
   fi
 
@@ -50,10 +50,10 @@ print_swap() {
   local swap_total=$(echo "$swap_free + $swap_used" | calc)
   local swap_pused=$(echo "($swap_used / $swap_total) * 100" | calc)
   local swap_pfree=$(echo "($swap_free / $swap_total) * 100" | calc)
-  
+
   # Calculate colors for mem and swap
   local swap_color=$(get_swap_color "$swap_pused")
-  
+
   local swap_view="$swap_view_tmpl"
   swap_view="${swap_view//'#{swap.used}'/$(printf "$size_format" "$swap_used" "$size_unit")}"
   swap_view="${swap_view//'#{swap.pused}'/$(printf "%.0f%%" "$swap_pused")}"
@@ -68,7 +68,7 @@ print_swap() {
 }
 
 get_swap_usage_osx(){
-  
+
   # assume swap size in MB
   local swap_used=$(sysctl -nq vm.swapusage | awk -F '  ' '{ print $2 }' | awk -F '=' '{gsub(/^[ ]|[M]$/, "", $2); printf "%d", $2 * 1024 }')
   local swap_free=$(sysctl -nq vm.swapusage | awk -F '  ' '{ print $3 }' | awk -F '=' '{gsub(/^[ ]|[M]$/, "", $2); printf "%d", $2 * 1024 }')
