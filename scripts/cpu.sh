@@ -15,7 +15,7 @@ cpu_view_tmpl=$(get_tmux_option "@sysstat_cpu_view_tmpl" ' #[fg=#{cpu.color}]
 cpu_medium_threshold=$(get_tmux_option "@sysstat_cpu_medium_threshold" "30")
 cpu_stress_threshold=$(get_tmux_option "@sysstat_cpu_stress_threshold" "80")
 
-cpu_color_low=$(get_tmux_option "@sysstat_cpu_color_low" "green")
+cpu_color_low=$(get_tmux_option "@sysstat_cpu_color_low" "white")
 cpu_color_medium=$(get_tmux_option "@sysstat_cpu_color_medium" "yellow")
 cpu_color_stress=$(get_tmux_option "@sysstat_cpu_color_stress" "red")
 

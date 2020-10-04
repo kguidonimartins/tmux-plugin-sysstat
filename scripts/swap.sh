@@ -13,7 +13,7 @@ swap_view_tmpl=$(get_tmux_option "@sysstat_swap_view_tmpl" ' #[fg=#{swap.colo
 swap_medium_threshold=$(get_tmux_option "@sysstat_swap_medium_threshold" "25")
 swap_stress_threshold=$(get_tmux_option "@sysstat_swap_stress_threshold" "75")
 
-swap_color_low=$(get_tmux_option "@sysstat_swap_color_low" "green")
+swap_color_low=$(get_tmux_option "@sysstat_swap_color_low" "white")
 swap_color_medium=$(get_tmux_option "@sysstat_swap_color_medium" "yellow")
 swap_color_stress=$(get_tmux_option "@sysstat_swap_color_stress" "red")
 
